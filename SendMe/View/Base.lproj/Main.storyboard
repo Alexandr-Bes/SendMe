@@ -19,23 +19,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sendMe-background" translatesAutoresizingMaskIntoConstraints="NO" id="Rsz-m4-puH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gU-wh-07N">
-                                <rect key="frame" x="0.0" y="615" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="610" width="375" height="57"/>
                                 <color key="backgroundColor" red="0.43232071399688721" green="0.23640823364257812" blue="0.083754785358905792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="lR5-L5-006"/>
+                                    <constraint firstAttribute="height" constant="57" id="lR5-L5-006"/>
                                 </constraints>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Qek-k9-d0f" kind="show" identifier="goToLogIn" id="MzT-jN-BRj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGS-WJ-ZA7">
-                                <rect key="frame" x="0.0" y="563" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="553" width="375" height="57"/>
                                 <color key="backgroundColor" red="0.46000558137893677" green="0.90724140405654907" blue="0.39480823278427124" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="eeA-6y-9UB"/>
+                                    <constraint firstAttribute="height" constant="57" id="eeA-6y-9UB"/>
                                 </constraints>
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -91,7 +94,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VkS-An-P8p">
                                         <rect key="frame" x="16" y="89" width="343" height="30"/>
@@ -253,7 +256,7 @@
                                         <rect key="frame" x="16" y="126" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddx-9Z-oCV">
                                         <rect key="frame" x="16" y="88" width="343" height="30"/>
@@ -336,6 +339,6 @@
         <image name="sendMe-background" width="4104" height="3233"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7L7-lT-rst"/>
+        <segue reference="c2f-Su-qNJ"/>
     </inferredMetricsTieBreakers>
 </document>
