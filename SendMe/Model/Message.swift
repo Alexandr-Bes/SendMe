@@ -9,7 +9,14 @@
 
 class Message {
 
-    //TODO: Messages need a messageBody and a sender variable
+    var sender = ""
+    var messageBody = ""
+
+//    init(sender: String,
+//         messageBody: String) {
+//        sender = sender
+//        messageBody = messageBody
+//    }
 
 
 

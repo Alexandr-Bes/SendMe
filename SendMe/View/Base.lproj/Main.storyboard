@@ -100,7 +100,7 @@
                                         <rect key="frame" x="16" y="89" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duV-lK-pV7">
                                         <rect key="frame" x="16" y="165" width="343" height="30"/>
@@ -177,7 +177,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgt-2X-WGB" userLabel="Compose View">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jx3-EN-bh4" userLabel="Message Text Field">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Message" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jx3-EN-bh4" userLabel="Message Text Field">
                                         <rect key="frame" x="8" y="10" width="305" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -228,7 +228,8 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="heightConstraint" destination="YeH-Rf-vfi" id="W1T-Em-p3e"/>
+                        <outlet property="bottomConstraint" destination="qr8-Fi-4y6" id="xS9-in-kVP"/>
+                        <outlet property="heightConstraint" destination="dFv-C9-fOI" id="p51-Kf-1qG"/>
                         <outlet property="messageTableView" destination="wyU-P9-d2A" id="ANU-F6-VAW"/>
                         <outlet property="messageTextField" destination="jx3-EN-bh4" id="Qfi-Gf-1dn"/>
                         <outlet property="sendButton" destination="wcZ-1o-6wP" id="vxc-7X-mAD"/>
@@ -262,12 +263,12 @@
                                         <rect key="frame" x="16" y="88" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgK-fK-X2U">
                                         <rect key="frame" x="16" y="164" width="343" height="30"/>
                                         <color key="backgroundColor" red="0.86754179000854492" green="0.12252555042505264" blue="0.057647250592708588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button">
+                                        <state key="normal" title="Log In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -339,6 +340,6 @@
         <image name="sendMe-background" width="4104" height="3233"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c2f-Su-qNJ"/>
+        <segue reference="ifc-7E-3QE"/>
     </inferredMetricsTieBreakers>
 </document>

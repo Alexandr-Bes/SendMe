@@ -10,11 +10,13 @@
 import UIKit
 import Firebase
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
+    var kbHeight: CGFloat = 0
+    var valueToAddToKeyboardHeight : CGFloat = 0
+    let device = UIDevice().name
 
-
-    
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var messageTextField: UITextField!
@@ -24,44 +26,77 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //TODO: Set yourself as the delegate and datasource here:
 
+        messageTableView.delegate = self
+        messageTableView.dataSource = self
 
+        messageTextField.delegate = self
 
-        //TODO: Set yourself as the delegate of the text field here:
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
+        messageTableView.addGestureRecognizer(tapGesture)
 
+        //Register for CustomMessageCell.xib
+        messageTableView.register(UINib(nibName: "CustomMessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
 
-        //TODO: Set the tapGesture here:
-
-
-
-        //TODO: Register your MessageCell.xib file here:
-
+        configureTableView()
 
     
     }
 
-    ///////////////////////////////////////////
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            kbHeight = keyboardRectangle.height
+            print("\(kbHeight)")
+
+            switch device {
+            case "iPhone X": valueToAddToKeyboardHeight = 15
+            case "iPhone XR": valueToAddToKeyboardHeight = 15
+            case "iPhone XS": valueToAddToKeyboardHeight = 15
+            case "iPhone XS Max": valueToAddToKeyboardHeight = 15
+            default:
+                valueToAddToKeyboardHeight = 50
+            }
+
+            UIView.animate(withDuration: 0.4) {
+                self.heightConstraint.constant = self.kbHeight + self.valueToAddToKeyboardHeight
+                self.view.layoutIfNeeded()
+            }
+        }
+
+    }
 
     //MARK: - TableView DataSource Methods
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
 
-    //TODO: Declare cellForRowAtIndexPath here:
+        let messageArray = ["First message", "Second 34234jrjgfkgkjkgsjdfkgjkfdjgfdslkjmessageejfefejkfjekwfjklejkfjekljfkejkjflkwjklfjkew", "Third message"]
+        cell.messageBody.text = messageArray[indexPath.row]
 
+        return cell
+    }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
 
-    //TODO: Declare numberOfRowsInSection here:
-
-
-
-    //TODO: Declare tableViewTapped here:
-
+    @objc func tableViewTapped() {
+        messageTextField.endEditing(true)
+    }
 
 
     //TODO: Declare configureTableView here:
-
+    func configureTableView() {
+        messageTableView.rowHeight = UITableView.automaticDimension
+        messageTableView.estimatedRowHeight = 120.0
+    }
 
 
     ///////////////////////////////////////////
@@ -69,16 +104,12 @@ class ChatViewController: UIViewController {
     //MARK:- TextField Delegate Methods
 
 
-
-
-    //TODO: Declare textFieldDidBeginEditing here:
-
-
-
-
-    //TODO: Declare textFieldDidEndEditing here:
-
-
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.4) {
+            self.heightConstraint.constant = 50
+            self.view.layoutIfNeeded()
+        }
+    }
 
     ///////////////////////////////////////////
 
