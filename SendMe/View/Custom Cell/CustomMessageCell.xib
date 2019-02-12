@@ -19,18 +19,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="86.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="owh-P9-Ci0" userLabel="Avatar Image View">
-                        <rect key="frame" x="0.0" y="10" width="53" height="53"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="owh-P9-Ci0" userLabel="Avatar Image View">
+                        <rect key="frame" x="1" y="10" width="53" height="53"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="53" id="NpM-w8-rQu"/>
                             <constraint firstAttribute="height" constant="53" id="vPQ-B5-Rw7"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaZ-bc-bGj" userLabel="Message Background">
-                        <rect key="frame" x="59" y="10" width="251" height="66.5"/>
+                        <rect key="frame" x="60" y="10" width="250" height="66.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bm-ij-l0C" userLabel="Sender Username">
-                                <rect key="frame" x="9" y="1" width="242" height="14.5"/>
+                                <rect key="frame" x="9" y="1" width="241" height="14.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14.5" id="KoA-8f-yel"/>
                                 </constraints>
@@ -39,13 +39,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uoz-FV-2Sm" userLabel="Message Body">
-                                <rect key="frame" x="9" y="17.5" width="242" height="29"/>
+                                <rect key="frame" x="9" y="17.5" width="241" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7bm-ij-l0C" firstAttribute="top" secondItem="VaZ-bc-bGj" secondAttribute="top" constant="1" id="3hF-rv-cje"/>
                             <constraint firstItem="Uoz-FV-2Sm" firstAttribute="top" secondItem="7bm-ij-l0C" secondAttribute="bottom" constant="2" id="5JY-Wh-x7C"/>
@@ -58,14 +58,14 @@
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="16"/>
+                                <integer key="value" value="20"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="VaZ-bc-bGj" secondAttribute="bottom" constant="10" id="2kY-4C-Kx8"/>
-                    <constraint firstItem="owh-P9-Ci0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="M94-YZ-2AN"/>
+                    <constraint firstItem="owh-P9-Ci0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="M94-YZ-2AN"/>
                     <constraint firstItem="VaZ-bc-bGj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="NEr-GZ-VPw"/>
                     <constraint firstAttribute="trailing" secondItem="VaZ-bc-bGj" secondAttribute="trailing" constant="10" id="ddK-sK-U67"/>
                     <constraint firstItem="owh-P9-Ci0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ifd-HE-85U"/>
