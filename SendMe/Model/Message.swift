@@ -11,12 +11,6 @@ class Message {
 
     var sender = ""
     var messageBody = ""
-//
-//    init(sender: String, messageBody: String) {
-//        sender = sender
-//        messageBody = messageBody
-//    }
-
 
 
 }

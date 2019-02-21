@@ -18,6 +18,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     let device = UIDevice().name
     var messageArray: [Message] = [Message]()
 
+
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var sendButton: UIButton!
@@ -25,13 +26,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var messageTableView: UITableView!
 
 
+    //MARK: - Lifecycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
         messageTableView.delegate = self
         messageTableView.dataSource = self
-
         messageTextField.delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -44,8 +46,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         configureTableView()
         retrieveMessages()
-
         messageTableView.separatorStyle = .none
+        messageTableView.allowsSelection = false
     }
 
 
@@ -83,14 +85,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.senderUsername.text = messageArray[indexPath.row].sender
         cell.avatarImageView.image = UIImage(named: "n-avatar")
 
-        if cell.senderUsername.text == Auth.auth().currentUser?.email as String! {
-            //Messages I sent
+        if cell.senderUsername.text == Auth.auth().currentUser?.email! {
 
+            //Messages I sent
             cell.avatarImageView.backgroundColor = UIColor.flatBrown()
             cell.messageBackground.backgroundColor = UIColor.flatCoffee()
         } else {
-            //Message somebody sent
 
+            //Another user sent a message
             cell.avatarImageView.backgroundColor = UIColor.flatLime()
             cell.messageBackground.backgroundColor = UIColor.flatPurple()
         }
@@ -117,7 +119,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     //MARK:- TextField Delegate Methods
 
-
     func textFieldDidEndEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.4) {
             self.heightConstraint.constant = 50
@@ -127,14 +128,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     ///////////////////////////////////////////
 
-
     //MARK: - Send & Recieve from Firebase
-
 
     @IBAction func sendPressed(_ sender: Any) {
 
-//        messageTextField.endEditing(true)
-//        messageTextField.isEnabled = false
         sendButton.isEnabled = false
 
         let messagesDB = Database.database().reference().child("Messages")
@@ -155,13 +152,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
-    //TODO: Create the retrieveMessages method here:
 
     func retrieveMessages() {
 
         let messageDB = Database.database().reference().child("Messages")
 
         messageDB.observe(.childAdded) { (snapshot) in
+
             let snapshotValue = snapshot.value as! Dictionary<String, String>
             let text = snapshotValue["MessageBody"]!
             let sender = snapshotValue["Sender"]!
@@ -178,9 +175,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
 
             self.configureTableView()
-
         }
-
     }
 
 
@@ -197,8 +192,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             else {
                 print("No VC to pop-off")
                 return
-
         }
     }
+
 
 }

@@ -21,12 +21,9 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
     }
 
     @IBAction func registerPressed(_ sender: Any) {
-
-         //MARK: Creating a new user on Firebase database
 
         if (passwordTextField.text?.count)! <= 5 {
 
@@ -35,14 +32,17 @@ class RegisterViewController: UIViewController {
 
             alertMessage.addAction(okAction)
             present(alertMessage, animated: true, completion: nil)
-
+            SVProgressHUD.dismiss()
         }
 
         SVProgressHUD.show()
+        
+        //MARK: Creating a new user on Firebase database
 
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
 
             if error != nil {
+                SVProgressHUD.dismiss()
                 print(error!)
             } else {
                 print("Registration successful")
