@@ -12,7 +12,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -21,7 +21,34 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureTextFields()
     }
+
+    //MARK:- TextField Delegate Methods
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        if let nextTextField = emailTextField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextTextField.becomeFirstResponder()
+        } else {
+            createNewUser()
+        }
+
+        return false
+    }
+
+
+    func configureTextFields() {
+
+        passwordTextField.returnKeyType = .go
+        emailTextField.returnKeyType = .next
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+
+        emailTextField.tag = 0
+        passwordTextField.tag = 1
+    }
+
 
     @IBAction func registerPressed(_ sender: Any) {
 
@@ -39,6 +66,13 @@ class RegisterViewController: UIViewController {
         
         //MARK: Creating a new user on Firebase database
 
+        createNewUser()
+
+
+    }
+
+    func createNewUser() {
+
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
 
             if error != nil {
@@ -53,7 +87,6 @@ class RegisterViewController: UIViewController {
         }
 
     }
-
 
 
 

@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBOutlet weak var emailTextField: UITextField!
@@ -20,9 +20,43 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       configureTextFields()
     }
 
+
+    //MARK:- TextField Delegate Methods
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        if let nextField = emailTextField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            logIn()
+        }
+        
+        return false
+    }
+
+    
+    func configureTextFields() {
+
+        passwordTextField.returnKeyType = .go
+        emailTextField.returnKeyType = .next
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+
+        emailTextField.tag = 0
+        passwordTextField.tag = 1
+    }
+
+
     @IBAction func logInPressed(_ sender: Any) {
+
+        logIn()
+
+    }
+
+    func logIn() {
 
         SVProgressHUD.show()
 
@@ -42,12 +76,13 @@ class LogInViewController: UIViewController {
             } else {
                 print("Log In successful")
                 SVProgressHUD.dismiss()
-                
+
                 self.performSegue(withIdentifier: "goToChat", sender: self)
             }
 
         }
-        
     }
-    
+
+
+
 }
